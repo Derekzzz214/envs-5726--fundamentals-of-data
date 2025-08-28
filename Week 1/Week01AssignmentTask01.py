@@ -1,0 +1,1 @@
+print('I want to use coding and data analysis to solve problems in EHS Management in manufacturing companies.')
