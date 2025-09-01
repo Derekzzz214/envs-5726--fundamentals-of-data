@@ -23,6 +23,10 @@ class PreySample:
     def get_sample_date(self):
         return datetime.datetime.strptime(self.sample_due_utc, "%Y-%m-%dT%H:%M:%SZ")
 
+    def get_discrimination_factor(self, predator_deltal3c: float):
+        prey_avg = self.get_average_delta13c()
+        return predator_deltal3c - prey_avg
+
 sample1 = PreySample(
     full_species_name = 'Harbor Seal (Phoca vitulina)',
     delta13c_list = [-12.4, -11.3, -10.6, -13.5, -15.8],
@@ -35,3 +39,12 @@ print(sample1.get_scientific_name())
 print(sample1.get_average_delta13c())
 print(sample1.get_tissue_count())
 print(sample1.get_sample_date())
+
+sample2 = PreySample(
+    full_species_name = 'Pacific pomfret (Brama japonica)',
+    delta13c_list = [-16.1, -17.8, -19.6, -19.1, -18.0],
+    tissue_description = 'Whole animal',
+    sample_due_utc = '2020-11-16T05:00:02Z',
+)
+
+print(sample2.get_discrimination_factor(predator_deltal3c=-15.5))
