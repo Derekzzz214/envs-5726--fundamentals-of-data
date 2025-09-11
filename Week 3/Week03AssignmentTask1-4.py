@@ -14,7 +14,7 @@ print(is_population_disabled(52, 392))
 def is_gp_religious_or_academic(gp):
     religious = {"Mosque", "Church"}
     academic = {"School", "Institute", "Education", "Faculty"}
-    gp_words = set(gp.split())
+    gp_words = set(gp.split(' '))
     return (len(gp_words.intersection(religious)) > 0) or (len(gp_words.intersection(academic)) > 0)
 print(is_gp_religious_or_academic('Faculty Of Earth Sciences and Mining'))
 print(is_gp_religious_or_academic('Almorada Church'))
