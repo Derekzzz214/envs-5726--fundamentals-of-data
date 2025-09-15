@@ -65,5 +65,5 @@ for company in companies:
 
     with open(Path(fr"C:\Users\张周延\Downloads\SEC_10K_{company}_Metrics.csv"), "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerows(headers)
+        writer.writerow(headers)
         writer.writerows(company_table)
