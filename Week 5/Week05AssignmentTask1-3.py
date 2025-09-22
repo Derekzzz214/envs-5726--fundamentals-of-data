@@ -97,11 +97,8 @@ def summarize(records, group_key, value_key, output_csv):
             writer.writerow([k, v])
 
 summarize(records, "trader_group", "cocoa_deforestation_15_years_total_exposure","Trader_Sum_Deforestation.csv")
-
 summarize(records, "trader_group", "cocoa_net_emissions_15_years_total","Trader_Sum_Emissions.csv")
-
 summarize(records, "country_of_destination", "cocoa_deforestation_15_years_total_exposure","Country_Sum_Deforestation.csv")
-
 summarize(records, "country_of_destination", "cocoa_net_emissions_15_years_total","Country_Sum_Emissions.csv")
 
 
