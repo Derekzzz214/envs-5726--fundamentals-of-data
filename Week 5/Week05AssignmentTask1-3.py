@@ -92,7 +92,7 @@ def summarize(records, group_key, value_key, output_csv):
 
     with open(output_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        writer.writerow(["group", "value"])
+        writer.writerow(["group_key", f"total_{value_key}"])
         for k, v in filtered.items():
             writer.writerow([k, v])
 
