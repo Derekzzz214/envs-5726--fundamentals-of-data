@@ -100,5 +100,9 @@ summarize(records, "trader_group", "cocoa_deforestation_15_years_total_exposure"
 summarize(records, "trader_group", "cocoa_net_emissions_15_years_total","Trader_Sum_Emissions.csv")
 summarize(records, "country_of_destination", "cocoa_deforestation_15_years_total_exposure","Country_Sum_Deforestation.csv")
 summarize(records, "country_of_destination", "cocoa_net_emissions_15_years_total","Country_Sum_Emissions.csv")
-
-
+'''
+else:
+    if "OTHER" not in filtered:
+        filtered["OTHER"] = 0
+    filtered["OTHER"] += v
+'''
