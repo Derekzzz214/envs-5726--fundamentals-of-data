@@ -30,7 +30,6 @@ for target_row in target_table:
         join_row = [None] * len(join_headers)
     outer_joined_table.append(target_row + join_row)
 
-target_id_set = set([row[target_headers.index(unique_id_name_target)] for row in target_table])
 for unique_id in join_dict:
     if unique_id not in target_dict:
         join_row = join_dict[unique_id]
@@ -49,12 +48,12 @@ total_rows = len(outer_joined_table)
 
 vaild_socvul = 0
 for row in outer_joined_table:
-    if row[id_socvul_index] is not None:
+    if row[id_socvul_index]:
         vaild_socvul += 1
 
 valid_haz = 0
 for row in outer_joined_table:
-    if row[id_haz_index] is not None:
+    if row[id_haz_index]:
         valid_haz += 1
 
 print(f"There are {vaild_socvul} valid ID_SOCVUL out of {total_rows} total joined rows")
