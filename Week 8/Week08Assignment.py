@@ -88,3 +88,30 @@ print(raw)
 clean_df = df.loc[:, m]
 print(clean_df.head())
 
+#Task8
+from factor_analyzer import FactorAnalyzer
+import pandas as pd
+
+data = clean_df   # ✅ 你的 Task7 输出表
+
+# Step 1: 初步因子分析
+fa = FactorAnalyzer(rotation="varimax")
+fa.fit(data)
+
+# Step 2: 指定因子个数并重新拟合
+number_of_factors = 5
+fa = FactorAnalyzer(n_factors=number_of_factors, rotation="varimax")
+fa.fit(data)
+
+# Step 3: 提取载荷矩阵（各变量在每个因子上的权重）
+factor_names = [f'Factor{i+1}' for i in range(number_of_factors)]
+loadings_df = pd.DataFrame(fa.loadings_, columns=factor_names, index=data.columns)
+
+# Step 4: 提取每个因子的方差
+index_names = ['Sum of Squared Loadings', 'Proportional Variance', 'Cumulative Variance']
+variance_df = pd.DataFrame(fa.get_factor_variance(), columns=factor_names, index=index_names)
+
+# Step 5: 保存结果
+loadings_df.to_csv(r'C:\Users\张周延\PycharmProjects\envs-5726--fundamentals-of-data\Week 8\WASH_Loadings.csv')
+variance_df.to_csv(r'C:\Users\张周延\PycharmProjects\envs-5726--fundamentals-of-data\Week 8\WASH_Variance.csv')
+
