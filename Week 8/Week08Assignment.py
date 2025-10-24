@@ -60,7 +60,7 @@ print(numeric_survey_table[0])
 
 #Task5
 from datalib import get_non_numeric_values
-get_non_numeric_values(binary_survey_table)
+get_non_numeric_values(numeric_survey_table)
 
 #Task7
 #Step1
