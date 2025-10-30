@@ -16,7 +16,7 @@ def plot_cdf_curve_fit(table, material_type, line_color):
     ydata = np.array([row[2] for row in material_data])
 
     def cumulative_density_function(age, c, b, a):
-        return 1 - c * np.exp(-(age / b) ** a)
+        return  1 - c * np.exp(-(age / b) ** a)
     coefficients, bounds = curve_fit(cumulative_density_function, xdata, ydata)
     c, b, a = coefficients
     print(f'Curve fitted CDF for {material_type}: Survival Probability = {c}* e^ (-(age/{b})^{a})')
@@ -55,7 +55,7 @@ WaterMain = namedtuple(
 
 # 定义 Weibull 生存概率函数
 def weibull_survival_probability(age, c, b, a):
-    prob = (1 - c * np.exp(-(age / b) ** a)) * 100
+    prob = float ((1 - c * np.exp(-(age / b) ** a)))
     if prob > 100:
         prob = 100
     return prob
@@ -93,6 +93,25 @@ with open(file_path, newline='', encoding='utf-8-sig') as csvfile:
 
 for row in water_mains_table[:5]:
     print(row)
+
+# Task3
+import matplotlib.pyplot as plt
+
+# 提取生存概率（从 Task2 中得到的 water_mains_table）
+survival_probs = [row.Survival_Probability for row in water_mains_table]
+
+bins = [0, 20, 40, 60, 80, 100]
+
+plt.hist(survival_probs, bins=bins, color='skyblue', edgecolor='black')
+
+plt.title("Distribution of Pipe Survival Probabilities in Mercator Water (2025)")
+plt.xlabel("Survival Probability (%)")
+plt.ylabel("Number of Pipes")
+
+# 5. 设置横轴刻度文字（符合 tutorial 风格）
+plt.xticks([10, 30, 50, 70, 90], ['0–20%', '20–40%', '40–60%', '60–80%', '80–100%'])
+
+plt.show()
 
 
 
