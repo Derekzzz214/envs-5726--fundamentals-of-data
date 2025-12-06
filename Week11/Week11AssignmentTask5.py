@@ -3,7 +3,7 @@ import pyodbc
 import sys
 import matplotlib.pyplot as plt
 
-# 从命令行读取用户输入的列名（如 sector / category / fuel 等）
+# 从命令行读取用户输入的列名（如 sector）
 group_column = sys.argv[1]
 
 # 拼接 SQL 查询语句，根据输入的列名进行 GROUP BY 汇总平均值
