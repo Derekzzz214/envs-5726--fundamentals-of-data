@@ -51,3 +51,4 @@ create_scatter_subplot(
 plt.tight_layout()
 plt.savefig("China_PM25_Correlations_Subplots.png", dpi=300)
 plt.show()
+
